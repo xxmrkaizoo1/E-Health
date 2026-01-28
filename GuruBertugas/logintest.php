@@ -1,0 +1,59 @@
+<?php 
+session_start(); 
+include "config.php";
+
+if (isset($_POST['uname']) && isset($_POST['password'])) {
+
+	function validate($data){
+       $data = trim($data);
+	   $data = stripslashes($data);
+	   $data = htmlspecialchars($data);
+	   return $data;
+	}
+
+	$uname = validate($_POST['uname']);
+	$pass = validate($_POST['password']);
+
+	if (empty($uname)) {
+		header("Location: index2.php?error=<div class='alert alert-dark' role='alert'>Please fill the username first  !</div>");
+	    exit();
+	}else if(empty($pass)){
+        header("Location: index2.php?error=<div class='alert alert-dark' role='alert'>Please fill the password first !</div>");
+	    exit();
+	}else{
+		$sql = "SELECT * FROM gurubertugas WHERE username='$uname' AND password='$pass'";
+
+		$result = mysqli_query($conn, $sql);
+
+		if (mysqli_num_rows($result) === 1) {
+			$row = mysqli_fetch_assoc($result);
+            if ($row['username'] === $uname && $row['password'] === $pass) {
+            	$_SESSION['username'] = $row['username'];
+            	
+            	$_SESSION['id'] = $row['id'];
+            	header("Location: dashboard.php");
+		        exit();
+            }
+		else{
+				header("Location: index2.php");
+		        exit();
+
+			}
+		}
+        else{
+            echo "<script>alert('Wrong username or password!');</script>";
+            echo "<script>window.location.href = 'index2.php';</script>";
+            exit();
+        }
+	}
+	
+}else{
+	header("Location: index2.php");
+	exit();
+}
+
+
+
+
+
+?>
