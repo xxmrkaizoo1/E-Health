@@ -106,17 +106,27 @@ This system allows students to submit health requests online, teachers (Guru Ber
 
 <table>
 <tr>
-<td width="50%" valign="top">
+---
 
-## 🛠 Tech Stack
-🔵 Backend: Manual PHP  
-🟣 Database: MySQL  
-🟠 Frontend: HTML, CSS  
-🟡 Logic: JavaScript  
-⚫ Version Control: Git & GitHub  
+<table>
+<tr>
+<td width="100%" valign="top">
+
+## 🎨 UI Design with Bootstrap
+This system uses **Bootstrap** to create a **responsive, clean, and user-friendly interface**.  
+Bootstrap helps ensure the system works well across different screen sizes and improves overall user experience.
+
+**Bootstrap is used for:**
+- Responsive page layout  
+- Forms and input styling  
+- Buttons and alerts  
+- Navigation bars  
+- Cards and tables  
 
 </td>
-<td width="50%" valign="top">
+</tr>
+</table>
+
 
 ## 🎯 Project Objectives
 🎯 Replace manual health request process  
